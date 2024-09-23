@@ -1,0 +1,13 @@
+.mypy_cache
+__pycache__
+*.pyc
+.DS_Store
+.idea
+
+venv
+*.env
+*.log
+*.pem
+*.pid
+
+storage
