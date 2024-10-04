@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load i18n %}
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Main Page">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>{% block title %}{% endblock %}</title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+        <link rel="icon" href="{% static 'img/favicon.svg' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block styles %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="main_table">
+            <div class="main_table_header_row">
+                Area of the logo
+            </div>
+            <div class="main_table_header_row height_5">
+                <div class="main_table_cell height_100 width_100 main-menu without_right_border">
+                    <a href="/" class="control">Главная</a>
+                </div>
+                <div class="main_table_cell height_100 width_100 main-menu without_right_border">
+                    <a href="/" class="control">Знатоки</a>
+                </div>
+                <div class="main_table_cell height_100 width_100 main-menu without_right_border">
+                    <a href="/" class="control">Телезрители</a>
+                </div>
+                <div class="main_table_cell height_100 width_100 main-menu">
+                    <a href="/" class="control">Летопись</a>
+                </div>
+            </div>
+            <div class="main_table_row">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
