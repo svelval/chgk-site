@@ -1,0 +1,85 @@
+:root {
+    --pink: #ff008c;
+    --light-pink: #ff41a5;
+    --blue: #a8ecff;
+    --navy-blue: #003891;
+    --red: red;
+    --dark-red: #be0000;
+    --blue-gradient: linear-gradient(to top, var(--blue), white);
+    --inverse-blue-gradient: linear-gradient(to top, white, var(--blue));
+    --red-gradient: linear-gradient(to top, var(--dark-red), var(--red));
+    --inverse-red-gradient: linear-gradient(to top, var(--red), var(--dark-red));
+    --pink-gradient: linear-gradient(to top, var(--pink), var(--light-pink));
+    --inverse-pink-gradient: linear-gradient(to top, var(--light-pink), var(--pink));
+}
+html,body
+{
+    height:100%;
+    margin:0;
+    padding:0;
+    background-color: var(--blue);
+}
+.main_table
+{
+    display: table;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    width: 60%;
+}
+.main_table_row
+{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_table_cell
+{
+    height: auto;
+    float:left;
+    display:table-column;
+}
+.main_table_header_row {
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-menu
+{
+    background: var(--blue-gradient);
+    border: solid var(--navy-blue);
+}
+.main-menu:hover {
+    background: var(--inverse-blue-gradient);
+}
+a.control {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Align horizontal */
+    align-items: center; /* Align vertical */
+    color: var(--navy-blue);
+    font-family: "Arial", serif;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.height_5
+{
+    height: 5%;
+}
+.width_100
+{
+    width: 100%;
+}
+.height_100
+{
+    height: 100%;
+}
+.without_right_border
+{
+    border-right: 0;
+}
