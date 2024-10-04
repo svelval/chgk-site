@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'auth',
     'game',
     'gamers',
+    'landing',
 ]
 
 MIDDLEWARE = [
