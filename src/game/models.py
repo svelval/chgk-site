@@ -39,9 +39,13 @@ class Game(models.Model):
     group = models.ForeignKey(to=Group, on_delete=models.PROTECT, verbose_name=_('group'))
     group_index = models.PositiveIntegerField(default=1, verbose_name=_('game index'))
     name = models.CharField(choices=NAME_CHOICES, verbose_name=_('game name'))
+    full_name = models.CharField(verbose_name=_('full name'))
     teams = models.ManyToManyField(to=Team, verbose_name=_('teams'))
     connoisseur_score = models.PositiveIntegerField(default=0, verbose_name=_('connoisseur score'))
     tv_viewers_score = models.PositiveIntegerField(default=0, verbose_name=_('tv viewers score'))
+
+    def __str__(self):
+        return str(self.full_name)
 
     def get_teams(self):
         return ', '.join(team for team in self.teams.all())
