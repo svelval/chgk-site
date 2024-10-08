@@ -8,6 +8,19 @@ from django.utils.translation import gettext_lazy as _
 from gamers.models import Team
 
 
+class Season(models.Model):
+    year = models.PositiveIntegerField(primary_key=True,
+                                       validators=[MinValueValidator(2014),
+                                                   MaxValueValidator(datetime.date.today().year)],
+                                       verbose_name=_('year'))
+    rules = models.TextField(verbose_name=_('rules'))
+    connoisseurs_stat = models.PositiveIntegerField(default=0, verbose_name=_('connoisseurs stat'))
+    tv_viewers_stat = models.PositiveIntegerField(default=0, verbose_name=_('TV viewers stat'))
+
+    def __str__(self):
+        return str(self.year)
+
+
 class Group(models.Model):
     class Meta:
         verbose_name = _('Group')
@@ -24,7 +37,7 @@ class Game(models.Model):
     class Meta:
         verbose_name = _('Game')
         verbose_name_plural = _('Games')
-        unique_together = ('year', 'group', 'group_index', )
+        unique_together = ('season', 'group', 'group_index', )
 
     NAME_CHOICES = (
         ('first_game', _('First game')),
@@ -37,9 +50,7 @@ class Game(models.Model):
     )
 
     date = models.DateTimeField(primary_key=True, verbose_name=_('date'))
-    year = models.PositiveIntegerField(validators=[MinValueValidator(2014),
-                                                   MaxValueValidator(datetime.date.today().year)],
-                                       verbose_name=_('year'))
+    season = models.ForeignKey(to=Season, on_delete=models.CASCADE)
     group = models.ForeignKey(to=Group, on_delete=models.PROTECT, verbose_name=_('group'))
     group_index = models.PositiveIntegerField(default=1, verbose_name=_('game index'))
     name = models.CharField(choices=NAME_CHOICES, verbose_name=_('game name'))
