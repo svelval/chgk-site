@@ -6,7 +6,7 @@ from .models import Game, Group, Season
 @admin.register(Season)
 class SeasonAdmin(admin.ModelAdmin):
     model = Group
-    list_display = ('year',)
+    list_display = ('year', 'connoisseurs_stat', 'tv_viewers_stat')
 
 
 @admin.register(Group)
