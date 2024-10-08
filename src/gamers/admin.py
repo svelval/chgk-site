@@ -24,4 +24,4 @@ class ConnoisseurAdmin(admin.ModelAdmin):
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
     model = Team
-    list_display = ('get_gamers', 'is_active', 'first_game', 'won_games', 'total_games', )
+    list_display = ('get_players', 'is_active', 'first_game', 'won_games', 'total_games', )

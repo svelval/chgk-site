@@ -63,4 +63,4 @@ class Game(models.Model):
         return str(self.full_name)
 
     def get_teams(self):
-        return ', '.join(team for team in self.teams.all())
+        return ', '.join(str(team) for team in self.teams.all())

@@ -81,10 +81,10 @@ class Team(models.Model):
     total_games = models.PositiveIntegerField(default=0, verbose_name=_('total games'))
 
     def __str__(self):
-        return str(_('%(captain_name)s\'s team')).format(self.captain)
+        return str(_('%(captain_name)s\'s team')) % {'captain_name': self.captain}
 
-    def get_gamers(self):
-        return ", ".join(player for player in self.players.all())
+    def get_players(self):
+        return ", ".join(str(player) for player in self.players.all())
 
     def archive(self):
         self.is_active = False
