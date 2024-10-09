@@ -56,7 +56,7 @@ class Game(models.Model):
     name = models.CharField(choices=NAME_CHOICES, verbose_name=_('game name'))
     full_name = models.CharField(verbose_name=_('full name'))
     teams = models.ManyToManyField(to=Team, verbose_name=_('teams'))
-    connoisseur_score = models.PositiveIntegerField(default=0, verbose_name=_('connoisseur score'))
+    connoisseurs_score = models.PositiveIntegerField(default=0, verbose_name=_('connoisseurs score'))
     tv_viewers_score = models.PositiveIntegerField(default=0, verbose_name=_('tv viewers score'))
 
     def __str__(self):
