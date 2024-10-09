@@ -26,18 +26,19 @@ class Group(models.Model):
         verbose_name = _('Group')
         verbose_name_plural = _('Groups')
 
+    season = models.ForeignKey(to=Season, on_delete=models.CASCADE)
     codename = models.CharField(primary_key=True, verbose_name=_('codename'))
     name = models.CharField(unique=True, verbose_name=_('name'))
 
     def __str__(self):
-        return str(self.name)
+        return f'{self.name} {self.season}'
 
 
 class Game(models.Model):
     class Meta:
         verbose_name = _('Game')
         verbose_name_plural = _('Games')
-        unique_together = ('season', 'group', 'group_index', )
+        unique_together = ('group', 'group_index', )
 
     NAME_CHOICES = (
         ('first_game', _('First game')),
@@ -50,8 +51,7 @@ class Game(models.Model):
     )
 
     date = models.DateTimeField(primary_key=True, verbose_name=_('date'))
-    season = models.ForeignKey(to=Season, on_delete=models.CASCADE)
-    group = models.ForeignKey(to=Group, on_delete=models.PROTECT, verbose_name=_('group'))
+    group = models.ForeignKey(to=Group, on_delete=models.CASCADE, verbose_name=_('group'))
     group_index = models.PositiveIntegerField(default=1, verbose_name=_('game index'))
     name = models.CharField(choices=NAME_CHOICES, verbose_name=_('game name'))
     full_name = models.CharField(verbose_name=_('full name'))
