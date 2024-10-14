@@ -30,9 +30,9 @@ class Group(models.Model):
         verbose_name = _('Group')
         verbose_name_plural = _('Groups')
 
-    season = models.ForeignKey(to=Season, on_delete=models.CASCADE)
-    codename = models.CharField(primary_key=True, verbose_name=_('codename'))
-    name = models.CharField(unique=True, verbose_name=_('name'))
+    season = models.ForeignKey(to=Season, on_delete=models.CASCADE, verbose_name=_('season'))
+    codename = models.CharField(verbose_name=_('codename'))
+    name = models.CharField(verbose_name=_('name'))
 
     def __str__(self):
         return f'{self.name} {self.season}'
