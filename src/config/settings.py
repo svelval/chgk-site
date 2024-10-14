@@ -145,9 +145,9 @@ LANGUAGES = (
 )
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'auth', 'locale'),
-    os.path.join(BASE_DIR, 'config', 'locale'),
     os.path.join(BASE_DIR, 'game', 'locale'),
     os.path.join(BASE_DIR, 'gamers', 'locale'),
+    os.path.join(BASE_DIR, 'landing', 'locale'),
 )
 
 TIME_ZONE = os.environ['TIME_ZONE']

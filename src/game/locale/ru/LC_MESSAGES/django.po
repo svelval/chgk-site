@@ -1,0 +1,141 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-14 22:25+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\game\admin.py:29 .\game\models.py:62
+msgid "teams"
+msgstr "команды"
+
+#: .\game\apps.py:9 .\game\models.py:43
+msgid "Game"
+msgstr "Игра"
+
+#: .\game\models.py:13
+msgid "Season"
+msgstr "Сезон"
+
+#: .\game\models.py:14
+msgid "Seasons"
+msgstr "Сезоны"
+
+#: .\game\models.py:19
+msgid "year"
+msgstr "год"
+
+#: .\game\models.py:20
+msgid "rules"
+msgstr "правила"
+
+#: .\game\models.py:21
+msgid "connoisseurs stat"
+msgstr "побед у знатоков"
+
+#: .\game\models.py:22
+msgid "TV viewers stat"
+msgstr "побед у телезрителей"
+
+#: .\game\models.py:30
+msgid "Group"
+msgstr "Серия"
+
+#: .\game\models.py:31
+msgid "Groups"
+msgstr "Серии"
+
+#: .\game\models.py:33
+msgid "season"
+msgstr "cезон"
+
+#: .\game\models.py:34
+msgid "codename"
+msgstr "кодовое название"
+
+#: .\game\models.py:35
+msgid "name"
+msgstr "название"
+
+#: .\game\models.py:44
+msgid "Games"
+msgstr "Игры"
+
+#: .\game\models.py:48
+msgid "First game"
+msgstr "Первая игра"
+
+#: .\game\models.py:49
+msgid "Second game"
+msgstr "Вторая игра"
+
+#: .\game\models.py:50
+msgid "Third game"
+msgstr "Третья игра"
+
+#: .\game\models.py:51
+msgid "Fourth game"
+msgstr "Четвёртая игра"
+
+#: .\game\models.py:52
+msgid "Fifth game"
+msgstr "Пятая игра"
+
+#: .\game\models.py:53
+msgid "Final game"
+msgstr "Финальная игра"
+
+#: .\game\models.py:54
+msgid "Year finale"
+msgstr "Финал года"
+
+#: .\game\models.py:57
+msgid "date"
+msgstr "дата"
+
+#: .\game\models.py:58
+msgid "group"
+msgstr "серия"
+
+#: .\game\models.py:59
+msgid "game index"
+msgstr "номер игры"
+
+#: .\game\models.py:60
+msgid "game name"
+msgstr "название игры"
+
+#: .\game\models.py:61
+msgid "full name"
+msgstr "полное название"
+
+#: .\game\models.py:63
+msgid "connoisseurs score"
+msgstr "знатоки (счёт)"
+
+#: .\game\models.py:64
+msgid "tv viewers score"
+msgstr "телезрители (счёт)"
+
+#: .\game\templates\game\game.html:31 .\game\templates\game\game.html:72
+msgid "connoisseurs"
+msgstr "знатоки"
+
+#: .\game\templates\game\game.html:38 .\game\templates\game\game.html:79
+msgid "TV viewers"
+msgstr "телезрители"

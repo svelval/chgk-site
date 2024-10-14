@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-14 22:25+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\gamers\admin.py:20 .\gamers\models.py:27
+msgid "awards"
+msgstr "награды"
+
+#: .\gamers\admin.py:44 .\gamers\models.py:71
+msgid "players"
+msgstr "игроки"
+
+#: .\gamers\apps.py:9
+msgid "Gamers"
+msgstr "Игроки"
+
+#: .\gamers\models.py:10
+msgid "Award"
+msgstr "Награда"
+
+#: .\gamers\models.py:11
+msgid "Awards"
+msgstr "Награды"
+
+#: .\gamers\models.py:13
+msgid "codename"
+msgstr ""
+
+#: .\gamers\models.py:14
+msgid "name"
+msgstr ""
+
+#: .\gamers\models.py:15 .\gamers\models.py:26
+msgid "description"
+msgstr "описание"
+
+#: .\gamers\models.py:23
+msgid "user"
+msgstr ""
+
+#: .\gamers\models.py:24
+msgid "first name"
+msgstr ""
+
+#: .\gamers\models.py:25
+msgid "last name"
+msgstr ""
+
+#: .\gamers\models.py:35
+msgid "TV Viewer"
+msgstr "Телезритель"
+
+#: .\gamers\models.py:36
+msgid "TV Viewers"
+msgstr "Телезрители"
+
+#: .\gamers\models.py:41
+msgid "Connoisseur"
+msgstr "Знаток"
+
+#: .\gamers\models.py:42
+msgid "Connoisseurs"
+msgstr "Знатоки"
+
+#: .\gamers\models.py:48 .\gamers\models.py:81
+msgid "first game"
+msgstr "первая игра"
+
+#: .\gamers\models.py:49 .\gamers\models.py:82
+msgid "won games"
+msgstr "выиграно игр"
+
+#: .\gamers\models.py:50 .\gamers\models.py:83
+msgid "total games"
+msgstr "всего игр"
+
+#: .\gamers\models.py:68
+msgid "Team"
+msgstr "Команда"
+
+#: .\gamers\models.py:69
+msgid "Teams"
+msgstr "Команды"
+
+#: .\gamers\models.py:75
+msgid "captain"
+msgstr "капитан"
+
+#: .\gamers\models.py:76
+msgid "is active"
+msgstr "активна?"
+
+#: .\gamers\models.py:86
+#, python-format
+msgid "%(captain_name)s's team"
+msgstr "команда %(captain_name)s"

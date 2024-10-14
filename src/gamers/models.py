@@ -20,7 +20,7 @@ class Award(models.Model):
 
 
 class BasePlayer(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name=_('user'))
     first_name = models.CharField(verbose_name=_('first name'))
     last_name = models.CharField(verbose_name=_('last name'))
     about = models.TextField(verbose_name=_('description'))
