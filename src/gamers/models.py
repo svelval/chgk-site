@@ -67,6 +67,10 @@ class Connoisseur(BasePlayer):
 
 
 class Team(models.Model):
+    class Meta:
+        verbose_name = _('Team')
+        verbose_name_plural = _('Teams')
+
     players = models.ManyToManyField(to=Connoisseur, related_name='teams', verbose_name=_('players'))
     captain = models.ForeignKey(to=Connoisseur,
                                 on_delete=models.PROTECT,

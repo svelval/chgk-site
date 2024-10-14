@@ -59,6 +59,10 @@ def user_pic_path(instance, filename):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    class Meta:
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,

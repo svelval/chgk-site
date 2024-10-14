@@ -9,6 +9,10 @@ from gamers.models import Team
 
 
 class Season(models.Model):
+    class Meta:
+        verbose_name = _('Season')
+        verbose_name_plural = _('Seasons')
+
     year = models.PositiveIntegerField(primary_key=True,
                                        validators=[MinValueValidator(2014),
                                                    MaxValueValidator(datetime.date.today().year)],
