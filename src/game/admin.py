@@ -3,6 +3,8 @@ from modeltranslation.admin import TranslationAdmin
 
 from .models import Game, Group, Season
 
+from django.utils.translation import gettext_lazy as _
+
 
 @admin.register(Season)
 class SeasonAdmin(TranslationAdmin):
@@ -20,3 +22,8 @@ class GroupAdmin(TranslationAdmin):
 class GameAdmin(TranslationAdmin):
     model = Game
     list_display = ('group', 'group_index', 'get_teams', 'date', )
+
+    def get_teams(self, obj):
+        return ', '.join(str(team) for team in obj.teams.all())
+
+    get_teams.short_description = _('teams')

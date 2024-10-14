@@ -65,6 +65,3 @@ class Game(models.Model):
 
     def __str__(self):
         return str(self.full_name)
-
-    def get_teams(self):
-        return ', '.join(str(team) for team in self.teams.all())

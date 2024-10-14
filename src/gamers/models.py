@@ -29,9 +29,6 @@ class BasePlayer(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
-    def get_awards(self):
-        return ', '.join(award for award in self.awards.all())
-
 
 class TVViewer(BasePlayer):
     class Meta:
@@ -87,9 +84,6 @@ class Team(models.Model):
 
     def __str__(self):
         return str(_('%(captain_name)s\'s team')) % {'captain_name': self.captain}
-
-    def get_players(self):
-        return ", ".join(str(player) for player in self.players.all())
 
     def archive(self):
         self.is_active = False
