@@ -36,13 +36,15 @@ ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split()
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'modeltranslation',
+    'django.contrib.admin',
+    
     'auth',
     'game',
     'gamers',
@@ -137,6 +139,10 @@ SESSION_COOKIE_AGE = 24 * 60 * 60
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = os.environ['LANGUAGE_CODE']
+LANGUAGES = (
+    ('ru', 'Russian'),
+    ('en', 'English'),
+)
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'auth', 'locale'),
     os.path.join(BASE_DIR, 'config', 'locale'),

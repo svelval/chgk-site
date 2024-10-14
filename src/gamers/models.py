@@ -10,12 +10,13 @@ class Award(models.Model):
         verbose_name = _('Award')
         verbose_name_plural = _('Awards')
 
-    name = models.CharField(primary_key=True, verbose_name=_('name'))
+    codename = models.CharField(primary_key=True, verbose_name=_('codename'))
+    name = models.CharField(verbose_name=_('name'))
     description = models.TextField(verbose_name=_('description'))
     pic = models.ImageField(upload_to='awards/', default='no_photo.jpg')
 
     def __str__(self):
-        return str(self.name)
+        return str(self.codename)
 
 
 class BasePlayer(models.Model):

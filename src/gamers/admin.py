@@ -1,22 +1,23 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 from .models import Award, TVViewer, Connoisseur, Team
 
 
 @admin.register(Award)
-class AwardAdmin(admin.ModelAdmin):
+class AwardAdmin(TranslationAdmin):
     model = Award
     list_display = ('name', 'description', )
 
 
 @admin.register(TVViewer)
-class TVViewerAdmin(admin.ModelAdmin):
+class TVViewerAdmin(TranslationAdmin):
     model = TVViewer
     list_display = ('user', 'first_name', 'last_name', 'about', 'get_awards', )
 
 
 @admin.register(Connoisseur)
-class ConnoisseurAdmin(admin.ModelAdmin):
+class ConnoisseurAdmin(TranslationAdmin):
     model = Connoisseur
     list_display = ('user', 'first_name', 'last_name', 'about', 'get_awards', 'first_game', 'won_games', 'total_games', )
 
