@@ -59,6 +59,12 @@ class Game(models.Model):
     group_index = models.PositiveIntegerField(default=1, verbose_name=_('game index'))
     name = models.CharField(choices=NAME_CHOICES, verbose_name=_('game name'))
     full_name = models.CharField(verbose_name=_('full name'))
+    location = models.CharField(verbose_name=_('location'))
+    best_player = models.ForeignKey(to='gamers.Connoisseur',
+                                    on_delete=models.PROTECT,
+                                    null=True,
+                                    blank=True,
+                                    verbose_name=_('best player'))
     teams = models.ManyToManyField(to=Team, verbose_name=_('teams'))
     connoisseurs_score = models.PositiveIntegerField(default=0, verbose_name=_('connoisseurs score'))
     tv_viewers_score = models.PositiveIntegerField(default=0, verbose_name=_('tv viewers score'))
