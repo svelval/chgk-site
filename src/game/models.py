@@ -64,7 +64,15 @@ class Game(models.Model):
                                     on_delete=models.PROTECT,
                                     null=True,
                                     blank=True,
+                                    related_name='best_players',
                                     verbose_name=_('best player'))
+    prize_type = models.CharField(null=True, blank=True, verbose_name=_('prize type'))
+    prize_winner = models.ForeignKey(to='gamers.Connoisseur',
+                                     on_delete=models.PROTECT,
+                                     null=True,
+                                     blank=True,
+                                     related_name='prize_winners',
+                                     verbose_name=_('prize winner'))
     teams = models.ManyToManyField(to=Team, verbose_name=_('teams'))
     connoisseurs_score = models.PositiveIntegerField(default=0, verbose_name=_('connoisseurs score'))
     tv_viewers_score = models.PositiveIntegerField(default=0, verbose_name=_('tv viewers score'))

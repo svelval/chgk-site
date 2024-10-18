@@ -14,4 +14,4 @@ class GroupTranslation(TranslationOptions):
 
 @register(Game)
 class GameTranslation(TranslationOptions):
-    fields = ('full_name', 'location')
+    fields = ('full_name', 'location', 'prize_type', )
