@@ -13,7 +13,7 @@ class UserAdmin(BaseUserAdmin):
             None,
             {
                 "fields": (
-                    'username'
+                    'username',
                     'email',
                     'telegram',
                     'avatar',
