@@ -21,7 +21,7 @@ class GroupAdmin(TranslationAdmin):
 @admin.register(Game)
 class GameAdmin(TranslationAdmin):
     model = Game
-    list_display = ('group', 'group_index', 'get_teams', 'date', )
+    list_display = ('group', 'name', 'group_index', 'get_teams', 'date', )
 
     def get_teams(self, obj):
         return ', '.join(str(team) for team in obj.teams.all())
