@@ -2,6 +2,7 @@ import datetime
 
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.urls import reverse
 
 from django.utils.translation import gettext_lazy as _
 
@@ -12,6 +13,7 @@ class Season(models.Model):
     class Meta:
         verbose_name = _('Season')
         verbose_name_plural = _('Seasons')
+        ordering = ('year',)
 
     year = models.PositiveIntegerField(primary_key=True,
                                        validators=[MinValueValidator(2014),
@@ -29,8 +31,11 @@ class Group(models.Model):
     class Meta:
         verbose_name = _('Group')
         verbose_name_plural = _('Groups')
+        unique_together = ('season', 'group_index', )
+        ordering = ('group_index',)
 
     season = models.ForeignKey(to=Season, on_delete=models.CASCADE, verbose_name=_('season'))
+    group_index = models.PositiveIntegerField(verbose_name=_('group index'))
     codename = models.CharField(verbose_name=_('codename'))
     name = models.CharField(verbose_name=_('name'))
 
@@ -42,8 +47,8 @@ class Game(models.Model):
     class Meta:
         verbose_name = _('Game')
         verbose_name_plural = _('Games')
-        unique_together = ('group', 'group_index', )
-        ordering = ['group_index',]
+        unique_together = ('group', 'game_index', )
+        ordering = ('game_index',)
 
     NAME_CHOICES = (
         ('first_game', _('First game')),
@@ -57,7 +62,7 @@ class Game(models.Model):
 
     date = models.DateTimeField(primary_key=True, verbose_name=_('date'))
     group = models.ForeignKey(to=Group, on_delete=models.CASCADE, verbose_name=_('group'))
-    group_index = models.PositiveIntegerField(default=1, verbose_name=_('game index'))
+    game_index = models.PositiveIntegerField(default=1, verbose_name=_('game index'))
     name = models.CharField(choices=NAME_CHOICES, verbose_name=_('game name'))
     full_name = models.CharField(verbose_name=_('full name'))
     location = models.CharField(verbose_name=_('location'))
