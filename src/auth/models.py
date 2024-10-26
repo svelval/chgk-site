@@ -71,7 +71,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(unique=True, verbose_name=_('Username'))
     email = models.EmailField(blank=True, null=True, unique=True, verbose_name=_('Email'))
     telegram = models.EmailField(blank=True, null=True, unique=True, verbose_name=_('Telegram'))
-    avatar = models.ImageField(upload_to=user_pic_path, default='no_photo.jpg', verbose_name=_('avatar'))
+    avatar = models.ImageField(upload_to=user_pic_path, default='img/no_photo_300_200.jpg', verbose_name=_('avatar'))
     is_active = models.BooleanField(default=True, verbose_name=_('Is active'))
     is_staff = models.BooleanField(default=False, verbose_name=_('Is staff'))
     date_joined = models.DateTimeField(auto_now_add=True, verbose_name=_('Date joined'))
