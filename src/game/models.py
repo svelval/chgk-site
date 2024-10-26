@@ -43,6 +43,7 @@ class Game(models.Model):
         verbose_name = _('Game')
         verbose_name_plural = _('Games')
         unique_together = ('group', 'group_index', )
+        ordering = ['group_index',]
 
     NAME_CHOICES = (
         ('first_game', _('First game')),
