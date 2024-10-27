@@ -26,6 +26,25 @@ class Season(models.Model):
     def __str__(self):
         return str(self.year)
 
+    @property
+    def first_group(self):
+        return self.group_set.all().first()
+
+    @property
+    def first_game(self):
+        return self.first_group.first_game
+
+    @property
+    def prev(self):
+        return getattr(Season.objects.filter(year=self.year - 1).first(), 'first_game', None)
+
+    @property
+    def next(self):
+        return getattr(Season.objects.filter(year=self.year + 1).first(), 'first_game', None)
+
+    def get_absolute_url(self):
+        return reverse('game:')
+
 
 class Group(models.Model):
     class Meta:
@@ -41,6 +60,20 @@ class Group(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.season}'
+
+    @property
+    def first_game(self):
+        return self.game_set.all().first()
+
+    def get_absolute_url(self):
+        if self.first_game:
+            return reverse('game:game', kwargs={
+                'group__season': self.season,
+                'group__codename': self.codename,
+                'game_index': self.first_game.game_index,
+            })
+        else:
+            return None
 
 
 class Game(models.Model):
@@ -85,3 +118,14 @@ class Game(models.Model):
 
     def __str__(self):
         return str(self.full_name)
+
+    @property
+    def season(self):
+        return self.group.season
+
+    def get_absolute_url(self):
+        return reverse('game:game', kwargs={
+            'group__season': self.group.season,
+            'group__codename': self.group.codename,
+            'game_index': self.game_index,
+        })
