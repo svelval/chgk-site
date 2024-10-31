@@ -26,6 +26,9 @@ class Season(models.Model):
     def __str__(self):
         return str(self.year)
 
+    def __bool__(self):
+        return (self.first_group is not None) and (self.first_group.first_game is not None)
+
     @property
     def first_group(self):
         return self.group_set.all().first()
@@ -60,6 +63,9 @@ class Group(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.season}'
+
+    def __bool__(self):
+        return self.first_game is not None
 
     @property
     def first_game(self):
