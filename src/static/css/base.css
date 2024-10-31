@@ -6,6 +6,9 @@
     --navy-blue: #1c51a6;
     --red: red;
     --dark-red: #be0000;
+    --light-red: #ff6b61;
+    --dark-gray: #7c7d7d;
+    --light-gray: #dee3e3;
     --blue-gradient: linear-gradient(to top, var(--blue), white);
     --light-blue-gradient: linear-gradient(to top, var(--light-blue), white);
     --inverse-blue-gradient: linear-gradient(to top, white, var(--blue));
@@ -87,8 +90,8 @@ td {
 }
 
 .light-blue-gradient-btn.disabled {
-    background: #dee3e3;
-    color: #7c7d7d;
+    background: var(--light-gray);
+    color: var(--dark-gray);
 }
 
 .light-blue-gradient-btn a {
@@ -97,7 +100,7 @@ td {
 }
 
 .light-blue-gradient-btn.disabled a {
-    color: #7c7d7d;
+    color: var(--dark-gray);
     text-decoration: none;
 }
 
@@ -108,6 +111,21 @@ td {
 }
 .main-menu:hover {
     background: var(--inverse-blue-gradient);
+}
+a {
+    text-decoration: none;
+}
+a[disabled] {
+    pointer-events: none;
+}
+a.navy-blue {
+    color: var(--navy-blue);
+}
+a.navy-blue[disabled] {
+    color: var(--light-gray);
+}
+a.light-red {
+    color: var(--light-red);
 }
 a.control {
     width: 100%;
