@@ -1,6 +1,7 @@
 {% extends 'landing/base.html' %}
 {% load static %}
 {% load i18n %}
+{% load get_attribute %}
 
 {% block title %}
 {{ game }}
@@ -13,77 +14,222 @@
 {% block body %}
     <div class="main_table_cell" style="height: 100%; text-align: center;">
         <table class="game_main_table" style="border: 1px solid black;width: 100%; height: 100%;">
-            <tr class="width_100" style="height: 7%;">
-                <td>
-                    <table style="width: 20%; height: 100%;">
+            <tr class="width_100" style="height: 1%">
+                <td width="20%">
+                    <table width="100%" style="height: 7%;">
                         <tr>
-                            <td style="width: 25%;"><</td>
-                            <td style="width: 50%;">{{ game.group.season }}</td>
-                            <td style="width: 25%;">></td>
+                            <td class="light-blue-gradient-btn {% if not game.season.prev %}disabled{% endif %}" style="width: 25%;">
+                                <a href="{% get_absolute_url game.season.prev %}" {% if not game.season.prev %}disabled{% endif %}>
+                                    <div  style="height: 100%; width: 100%;">
+                                        <
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="light-blue-gradient-btn" style="width: 50%;">
+                                {{ game.season }}
+                            </td>
+                            <td class="light-blue-gradient-btn {% if not game.season.next %}disabled{% endif %}" style="width: 25%;">
+                                <a href="{% get_absolute_url game.season.next %}" {% if not game.season.next %}disabled{% endif %}>
+                                    <div style="height: 100%; width: 100%;">
+                                        >
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="80%" rowspan="4">
+                    <table style="width: 100%; height: 100%;">
+                        <tr style="height: 30vh;">
+                            <td style="border: 2px solid yellow; vertical-align: top; text-align: left;">
+                                <div class="game-title navy-blue bold" style="margin-left: 1%; margin-top: 1%;">
+                                    {% translate 'What' %}? - {{ game.get_name_display }}<br>
+                                    {% translate 'Where' %}? - {{ game.location }}<br>
+                                    {% translate 'When' %}? - {{ game.date }}
+                                </div>
+                            </td>
+                            <td width="50%">
+                                <table class="game_info_block navy-blue bold" style="width: 60%; height: 80%; margin: auto;">
+                                    <tr style="height: 1%;">
+                                        <td>
+                                            {{ game.get_name_display }}
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 20vh;">
+                                        <td>
+                                            <table class="season_group_game" style="width: 80%; height: 100%; margin: auto;">
+                                                <tr>
+                                                    <td class="score_white_block" colspan="2">{% translate 'connoisseurs' %}</td>
+                                                </tr>
+                                                <tr class="game_score" style="height: 100%; width: 80%;">
+                                                    <td class="score_white_block" style="width: 50%;">{{ game.connoisseurs_score }}</td>
+                                                    <td class="score_blue_block" style="width: 50%;">{{ game.tv_viewers_score }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="score_blue_block" colspan="2">{% translate 'TV viewers' %}</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ game.group.name }}
+                                        </td>
+                                    </tr>
+                                    {% if game.best_player %}
+                                        <tr>
+                                            <td>
+                                                {% translate 'The best player' %} - {{ game.best_player }}
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if game.best_player %}
+                                        <tr>
+                                            <td>
+                                                {% translate 'The best question' %} - {{ game.best_player }}
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if game.prize_winner %}
+                                        <tr>
+                                            <td>
+                                                {{ game.prize_type }} - {{ game.prize_winner }}
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+
+                                    <tr class="navy-blue-background white" style="height: 1%;">
+                                        <td>
+                                            {% translate 'Chronology' %}
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 1%;">
+                                        <td>
+                                            {% translate 'Game transcript' %}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr style="height: auto;">
+                            <td colspan="2">
+                                <table width="90%;" style="height: 100%; margin-top: 0px; margin-left: 5%; margin-right: 5%; border: 2px solid yellow;">
+                                    <tr style="height: 5vh;">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    {% for team in game.teams.all %}
+                                        <tr>
+                                            <td>
+                                                {{ team }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;">
+                                                <ol type="1">
+                                                    {% for player in team.players.all %}
+                                                        <li>{{ player }}</li>
+                                                    {% endfor %}
+                                                </ol>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <table class="light-blue-background">
+                                                    <tr style="height: 20vh;">
+                                                        {% for player in team.players.all %}
+                                                            <td style="width: 1%; height: 1%;">
+                                                                <img class="avatar" style="width: 5.208vw; height: 15vh; margin-top: 5%;" src="{{ player.user.avatar.url }}">
+                                                            </td>
+                                                        {% endfor %}
+                                                    </tr>
+                                                    <tr style="height: 1vh;">
+                                                        {% for player in team.players.all %}
+                                                            <td class="navy-blue bold">
+                                                                {{ player }}
+                                                            </td>
+                                                        {% endfor %}
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 5vh;">
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            <tr class="width_100" style="height: 15%;">
-                <td>
-                    <table class="season_stat" style="width: 20%">
+            <tr class="width_100" style="height: 1%;">
+                <td width="20%">
+                    <table width="100%" class="season_stat">
                         <tr>
-                            <td colspan="2">{% translate 'connoisseurs' %}</td>
+                            <td class="score_white_block" colspan="2">{% translate 'connoisseurs' %}</td>
                         </tr>
                         <tr>
-                            <td style="width: 50%;">{{ game.group.season.connoisseurs_stat }}</td>
-                            <td style="width: 50%;">{{ game.group.season.tv_viewers_stat }}</td>
+                            <td class="score_white_block" style="width: 50%;">{{ game.season.connoisseurs_stat }}</td>
+                            <td class="score_blue_block" style="width: 50%;">{{ game.season.tv_viewers_stat }}</td>
                         </tr>
                         <tr>
-                            <td colspan="2">{% translate 'TV viewers' %}</td>
+                            <td class="score_blue_block" colspan="2">{% translate 'TV viewers' %}</td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            <tr class="width_100">
-                <td>
-                    <table class="season_group" style="width: 20%">
-                        {% for group in game.group.season.group_set.all %}
+            <tr class="width_100" style="height: auto;">
+                <td width="20%">
+                    <table width="100%" class="bold">
+                        {% for group in game.season.group_set.all %}
                             <tr>
-                                <td>
-                                    {{ group }}
+                                <td class="navy-blue {% if not game.season.prev %}disabled{% endif %}">
+                                    <a class="{% if group == game.group %}light-red{% else %}navy-blue{% endif %}" href="{{ group.get_absolute_url }}" {% if not group.first_game %}disabled{% endif %}>
+                                        <div  style="height: 100%; width: 100%;">
+                                            {{ group.name }}
+                                        </div>
+                                    </a>
                                 </td>
                             </tr>
                         {% endfor %}
                     </table>
                 </td>
             </tr>
-            <tr class="width_100" style="height: 50%">
-                <td>
-                    <table style="width: 20%; height: 100%; border: 1px solid red; align: top;">
+            <tr class="width_100" style="height: auto;">
+                <td width="20%">
+                    <table width="100%" style="height: 100%; border: 1px solid red; align: top;">
                         {% for group_game in game.group.game_set.all %}
                             <tr>
                                 <td style="border: 5px dotted green;">
-                                    <table style="width: 15%; margin: auto; margin-top: 0%; margin-bottom: 5%;">
-                                        <tr>
+                                    <table class="game_info_block navy-blue bold" style="width: 85%; margin: auto;">
+                                        <tr style="height: 1%;">
                                             <td>
-                                                {{ game.get_name_display }}
+                                                {{ group_game.get_name_display }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <table class="season_group_game" style=" margin: auto;">
+                                                <table class="season_group_game" style="margin: auto;">
                                                     <tr>
-                                                        <td colspan="2">{% translate 'connoisseurs' %}</td>
+                                                        <td class="score_white_block" colspan="2">{% translate 'connoisseurs' %}</td>
+                                                    </tr>
+                                                    <tr style="height: 5vh;" class="game_score_small">
+                                                        <td class="score_white_block" style="width: 50%;">{{ group_game.connoisseurs_score }}</td>
+                                                        <td class="score_blue_block" style="width: 50%;">{{ group_game.tv_viewers_score }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="width: 50%;">{{ group_game.connoisseurs_score }}</td>
-                                                        <td style="width: 50%;">{{ group_game.tv_viewers_score }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">{% translate 'TV viewers' %}</td>
+                                                        <td class="score_blue_block" colspan="2">{% translate 'TV viewers' %}</td>
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr style="height: 1%;">
                                             <td>
-                                                {{ game.date|date:"d.m.Y" }}
+                                                {{ group_game.date|date:"d.m.Y" }}
                                             </td>
                                         </tr>
                                     </table>
