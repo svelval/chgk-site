@@ -46,7 +46,8 @@ class Season(models.Model):
         return Season.objects.filter(year=self.year + 1).first()
 
     def get_absolute_url(self):
-        return reverse('game:')
+        first_game = getattr(self.first_group, 'first_game', None)
+        return (getattr(first_game, 'get_absolute_url', None) or str)()
 
 
 class Group(models.Model):
