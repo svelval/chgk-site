@@ -35,7 +35,7 @@ class Season(models.Model):
 
     @property
     def first_game(self):
-        return self.first_group.first_game
+        return getattr(self.first_group, 'first_game', None)
 
     @property
     def prev(self):
