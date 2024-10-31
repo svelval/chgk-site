@@ -39,11 +39,11 @@ class Season(models.Model):
 
     @property
     def prev(self):
-        return getattr(Season.objects.filter(year=self.year - 1).first(), 'first_game', None)
+        return Season.objects.filter(year=self.year - 1).first()
 
     @property
     def next(self):
-        return getattr(Season.objects.filter(year=self.year + 1).first(), 'first_game', None)
+        return Season.objects.filter(year=self.year + 1).first()
 
     def get_absolute_url(self):
         return reverse('game:')
