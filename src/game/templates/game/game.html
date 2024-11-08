@@ -222,34 +222,38 @@
                         {% for group_game in game.group.game_set.all %}
                             <tr>
                                 <td style="border: 5px dotted green;">
-                                    <table class="game_info_block navy-blue bold" style="width: 85%; margin: auto;">
-                                        <tr style="height: 1%;">
-                                            <td>
-                                                {{ group_game.get_name_display }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <table class="season_group_game" style="margin: auto;">
-                                                    <tr>
-                                                        <td class="score_white_block" colspan="2">{% translate 'connoisseurs' %}</td>
-                                                    </tr>
-                                                    <tr style="height: 5vh;" class="game_score_small">
-                                                        <td class="score_white_block" style="width: 50%;">{{ group_game.connoisseurs_score }}</td>
-                                                        <td class="score_blue_block" style="width: 50%;">{{ group_game.tv_viewers_score }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="score_blue_block" colspan="2">{% translate 'TV viewers' %}</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr style="height: 1%;">
-                                            <td>
-                                                {{ group_game.date|date:"d.m.Y" }}
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    <a href="{{ group_game.get_absolute_url }}" style="display: block; width: 85%; margin: auto; ">
+                                        <div style="width: 100%;">
+                                            <table class="{% if group_game == game %}light-orange-background{% else %}light-blue-background{% endif %} light-orange-hover-background navy-blue bold" style="width: 100%;">
+                                                <tr style="height: 1%;">
+                                                    <td>
+                                                        {{ group_game.get_name_display }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table class="season_group_game" style="margin: auto;">
+                                                            <tr>
+                                                                <td class="score_white_block" colspan="2">{% translate 'connoisseurs' %}</td>
+                                                            </tr>
+                                                            <tr style="height: 5vh;" class="game_score_small">
+                                                                <td class="score_white_block" style="width: 50%;">{{ group_game.connoisseurs_score }}</td>
+                                                                <td class="score_blue_block" style="width: 50%;">{{ group_game.tv_viewers_score }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="score_blue_block" colspan="2">{% translate 'TV viewers' %}</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 1%;">
+                                                    <td>
+                                                        {{ group_game.date|date:"d.m.Y" }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </a>
                                 </td>
                             </tr>
                         {% endfor %}
