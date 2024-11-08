@@ -105,7 +105,24 @@
                                     </tr>
                                     <tr style="height: 1%;">
                                         <td>
-                                            {% translate 'Game transcript' %}
+                                            <table width="100%;">
+                                                <tr>
+                                                    <td class="light-blue-gradient-btn {% if not game.prev %}disabled{% endif %}" style="width: 50%;">
+                                                        <a href="{% get_absolute_url game.prev %}" {% if not game.prev %}disabled{% endif %}>
+                                                            <div  style="height: 100%; width: 100%;">
+                                                                <
+                                                            </div>
+                                                        </a>
+                                                    </td>
+                                                    <td class="light-blue-gradient-btn {% if not game.next %}disabled{% endif %}" style="width: 50%;">
+                                                        <a href="{% get_absolute_url game.next %}" {% if not game.next %}disabled{% endif %}>
+                                                            <div style="height: 100%; width: 100%;">
+                                                                >
+                                                            </div>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                 </table>
