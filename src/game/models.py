@@ -30,20 +30,28 @@ class Season(models.Model):
         return (self.first_group is not None) and (self.first_group.first_game is not None)
 
     @property
+    def prev(self):
+        return Season.objects.filter(year__lt=self.year).last()
+
+    @property
+    def next(self):
+        return Season.objects.filter(year__gt=self.year).first()
+
+    @property
     def first_group(self):
         return self.group_set.all().first()
+
+    @property
+    def last_group(self):
+        return self.group_set.all().last()
 
     @property
     def first_game(self):
         return getattr(self.first_group, 'first_game', None)
 
     @property
-    def prev(self):
-        return Season.objects.filter(year=self.year - 1).first()
-
-    @property
-    def next(self):
-        return Season.objects.filter(year=self.year + 1).first()
+    def last_game(self):
+        return getattr(self.last_group, 'last_game', None)
 
     def get_absolute_url(self):
         first_game = getattr(self.first_group, 'first_game', None)
@@ -71,6 +79,18 @@ class Group(models.Model):
     @property
     def first_game(self):
         return self.game_set.all().first()
+
+    @property
+    def last_game(self):
+        return self.game_set.all().last()
+
+    @property
+    def prev(self):
+        return self.season.group_set.all().filter(group_index__lt=self.group_index).last()
+
+    @property
+    def next(self):
+        return self.season.group_set.all().filter(group_index__gt=self.group_index).first()
 
     def get_absolute_url(self):
         if self.first_game:
@@ -129,6 +149,20 @@ class Game(models.Model):
     @property
     def season(self):
         return self.group.season
+
+    @property
+    def prev(self):
+        prev_game = self.group.game_set.all().filter(game_index__lt=self.game_index).last()
+        return (prev_game or
+                getattr(self.group.prev, 'last_game', None) or
+                getattr(self.season.prev, 'last_game', None))
+
+    @property
+    def next(self):
+        next_game = self.group.game_set.all().filter(game_index__gt=self.game_index).first()
+        return (next_game or
+                getattr(self.group.next, 'first_game', None) or
+                getattr(self.season.next, 'first_game', None))
 
     def get_absolute_url(self):
         return reverse('game:game', kwargs={
