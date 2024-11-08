@@ -7,11 +7,14 @@
     --red: red;
     --dark-red: #be0000;
     --light-red: #ff6b61;
+    --orange: #ffb300;
+    --light-orange: #ffeec7;
     --dark-gray: #7c7d7d;
     --light-gray: #dee3e3;
     --blue-gradient: linear-gradient(to top, var(--blue), white);
     --light-blue-gradient: linear-gradient(to top, var(--light-blue), white);
     --inverse-blue-gradient: linear-gradient(to top, white, var(--blue));
+    --inverse-light-blue-gradient: linear-gradient(to top, white, var(--light-blue));
     --red-gradient: linear-gradient(to top, var(--dark-red), var(--red));
     --inverse-red-gradient: linear-gradient(to top, var(--red), var(--dark-red));
     --pink-gradient: linear-gradient(to top, var(--pink), var(--light-pink));
@@ -62,12 +65,24 @@ html,body
     color: var(--navy-blue);
 }
 
+.blue-hover-background:hover {
+    background-color: var(--blue);
+}
+
 .navy-blue-background {
     background-color: var(--navy-blue);
 }
 
 .light-blue-background {
     background-color: var(--light-blue);
+}
+
+.light-orange-background {
+    background-color: var(--light-orange);
+}
+
+.light-orange-hover-background:hover {
+    background-color: var(--light-orange);
 }
 
 .white {
@@ -87,6 +102,10 @@ td {
     border: 1px solid var(--navy-blue);
     color: var(--navy-blue);
     text-decoration: none;
+}
+
+.light-blue-gradient-btn:hover {
+    background: var(--inverse-light-blue-gradient);
 }
 
 .light-blue-gradient-btn.disabled {
@@ -110,7 +129,7 @@ td {
     border: solid var(--navy-blue);
 }
 .main-menu:hover {
-    background: var(--inverse-blue-gradient);
+    background: var(--inverse-light-blue-gradient);
 }
 a {
     text-decoration: none;
